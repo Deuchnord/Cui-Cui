@@ -1,6 +1,10 @@
 package fr.tanghevandekadsye.jee;
 
-import static org.junit.*;
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+
 
 public class EmailCITest {
     @Test

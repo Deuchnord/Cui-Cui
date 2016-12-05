@@ -2,6 +2,9 @@ package fr.tanghevandekadsye.jee;
 
 import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by quentinvdk on 05/12/16.
  * Verification d'une numéro de téléphone.
@@ -13,10 +16,10 @@ public class PhoneCI implements ContactInfo {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
+
     public boolean isValid() {
         Pattern pattern = Pattern.compile("^[0-9]{10}$");
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.find();
     }
 

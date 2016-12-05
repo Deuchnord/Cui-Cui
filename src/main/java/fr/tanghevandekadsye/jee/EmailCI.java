@@ -1,6 +1,8 @@
 package fr.tanghevandekadsye.jee;
 
 import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
+
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -14,9 +16,9 @@ public class EmailCI implements ContactInfo {
         this.email = email;
     }
 
-    @Override
+
     public boolean isValid() {
-        Pattern pattern = Pattern.compile("^([a-zA-Z0-9-_.]+)@([a-zA-Z-_.])\.([a-z]+)$");
+        Pattern pattern = Pattern.compile("^([a-zA-Z0-9-_.]+)@([a-zA-Z-_.])\\.([a-z]+)$");
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
     }
