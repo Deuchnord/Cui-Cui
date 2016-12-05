@@ -7,13 +7,21 @@ import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
  * Verification d'une numéro de téléphone.
  */
 public class PhoneCI implements ContactInfo {
+    protected String phoneNumber;
+
+    public PhoneCI(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public boolean isValid() {
-        return false;
+        Pattern pattern = Pattern.compile("^[0-9]{10}$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.phoneNumber;
     }
 }
