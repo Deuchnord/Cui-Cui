@@ -1,6 +1,7 @@
 package fr.tanghevandekadsye.jee.entity;
 
 import org.springframework.data.annotation.Id;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ public class Message {
     protected List<User> likedBy;
     protected String text;
 
-    protected Message () {}
+    protected Message() {
+    }
 
-    public Message (User auth, Date dateOfMessage, List<String> hashtags,List<User> likes, String text)
-    {
+    public Message(User auth, Date dateOfMessage, List<String> hashtags, List<User> likes, String text) {
         this.author = auth;
         this.date = dateOfMessage;
         this.hashtags = hashtags;
@@ -51,7 +52,7 @@ public class Message {
         Pattern pattern = Pattern.compile("(\\#[a-zA-Z0-1_]+)");
         Matcher matcher = pattern.matcher(text);
 
-        while(matcher.find()) {
+        while (matcher.find()) {
             System.out.println(matcher);
         }
 
@@ -106,7 +107,6 @@ public class Message {
     public void setText(String text) {
         this.text = text;
     }
-
 
 
     @Override
