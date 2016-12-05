@@ -1,4 +1,4 @@
-package fr.tanghevandekadsye.jee.Entity;
+package fr.tanghevandekadsye.jee.entity;
 
 import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
 import fr.tanghevandekadsye.jee.SocialNetwork;

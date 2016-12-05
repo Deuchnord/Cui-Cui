@@ -1,6 +1,6 @@
 package fr.tanghevandekadsye.jee.Interfaces.Repository;
 
-import fr.tanghevandekadsye.jee.Entity.Message;
+import fr.tanghevandekadsye.jee.entity.Message;
 
 import org.springframework.data.repository.CrudRepository;
 

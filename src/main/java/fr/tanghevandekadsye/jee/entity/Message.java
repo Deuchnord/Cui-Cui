@@ -1,4 +1,4 @@
-package fr.tanghevandekadsye.jee.Entity;
+package fr.tanghevandekadsye.jee.entity;
 
 import org.springframework.data.annotation.Id;
 import javax.persistence.GeneratedValue;
