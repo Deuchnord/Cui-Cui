@@ -18,7 +18,7 @@ public class EmailCI implements ContactInfo {
 
 
     public boolean isValid() {
-        Pattern pattern = Pattern.compile("^([a-zA-Z0-9-_.]+)@([a-zA-Z-_.])\\.([a-z]+)$");
+        Pattern pattern = Pattern.compile("^([a-zA-Z0-9_.-]+)@([a-zA-Z-_.]+)\\.([a-z]+)$");
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
     }
