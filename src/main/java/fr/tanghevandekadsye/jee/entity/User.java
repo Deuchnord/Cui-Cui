@@ -23,9 +23,6 @@ public class User {
     protected Long id;
     protected String nom, pseudo, photoUrl;
     protected List<User> followedUsers;
-
-
-
     protected List<SocialNetwork> socialNetworks;
     protected List<ContactInfo> contactInfos;
 
