@@ -1,7 +1,9 @@
 package fr.tanghevandekadsye.jee.controller.rest;
 
 import fr.tanghevandekadsye.jee.Interfaces.Repository.MessageRepository;
+import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.entity.Message;
+import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
     @Autowired
     private MessageRepository repository;
+
+    @Autowired
+    private UserRepository userRepo;
 
     /**
      * Obtenir un message par son id
@@ -51,11 +56,12 @@ public class MessageController {
     Méthodes POST
      */
 
-    @RequestMapping(value = "/{message}",method = RequestMethod.POST)
-    public void addMessage(@PathVariable(value = "message") String message)
+    @RequestMapping(value = "/{token}/{message}",method = RequestMethod.POST)
+    public void addMessage(@PathVariable(value = "token") String token, @PathVariable(value = "message") String message)
     {
-        //Message msg = new Message(author, message);
-        //repository.save(msg);
+        User author = userRepo.findByToken(token);
+        Message msg = new Message(author, message);
+        repository.save(msg);
 
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

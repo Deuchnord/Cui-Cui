@@ -25,16 +25,18 @@ public class User {
     protected List<User> followedUsers;
     protected List<SocialNetwork> socialNetworks;
     protected List<ContactInfo> contactInfos;
+    protected String token;
 
     public User() {}
 
-    public User(String nom, String pseudo, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos) {
+    public User(String nom, String pseudo, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos,String token) {
         this.nom = nom;
         this.pseudo = pseudo;
         this.photoUrl = photoUrl;
         this.socialNetworks = socialNetworks;
         this.contactInfos = contactInfos;
         followedUsers = new ArrayList<>();
+        this.token = token;
     }
 
     public Long getId() { return id; }
@@ -71,6 +73,14 @@ public class User {
 
     public void setContactInfos(List<ContactInfo> contactInfos) {
         this.contactInfos = contactInfos;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void addFollowedUser(User user) throws TryingToFollowMyselfException {
