@@ -21,7 +21,7 @@ public class Message {
     protected List<User> likedBy;
     protected String text;
 
-    protected Message () {}
+    public Message () {}
 
     public Message (User auth, Date dateOfMessage, List<String> hashtags,List<User> likes, String text)
     {

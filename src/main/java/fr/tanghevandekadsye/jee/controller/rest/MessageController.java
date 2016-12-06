@@ -24,7 +24,7 @@ public class MessageController {
      * @param id l'id du message
      * @return Le message
      */
-    @RequestMapping("{id}")
+    @RequestMapping("/{id}")
     public Message getMessage(@PathVariable(value = "id") long id)
     {
         return repository.findOne(id);
@@ -36,13 +36,13 @@ public class MessageController {
         return repository.findAll();
     }
 
-    @RequestMapping("hashtag/{name}")
+    @RequestMapping("/hashtag/{name}")
     public Iterable<Message> getByHashtags(@PathVariable(value = "name") String hashtag)
     {
         return repository.findByHashtag(hashtag);
     }
 
-    @RequestMapping("search/{text}")
+    @RequestMapping("/search/{text}")
     public Iterable<Message> getByText(@PathVariable(value = "text") String text)
     {
         return repository.findByText(text);
@@ -51,14 +51,14 @@ public class MessageController {
     Méthodes POST
      */
 
-    @RequestMapping(value = "{message}",method = RequestMethod.POST)
+    @RequestMapping(value = "/{message}",method = RequestMethod.POST)
     public void addMessage(@PathVariable(value = "message") String message)
     {
-        Message msg = new Message(author, message);
-        repository.save(msg);
+        //Message msg = new Message(author, message);
+        //repository.save(msg);
 
     }
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteMessage(@PathVariable(value = "id") long id)
     {
         repository.delete(id);
