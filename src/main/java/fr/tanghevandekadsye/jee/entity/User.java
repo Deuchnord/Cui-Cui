@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     protected Long id;
-    protected String nom, pseudo, photoUrl;
+    protected String nom, pseudo, photoUrl, password;
     protected List<User> followedUsers;
     protected List<SocialNetwork> socialNetworks;
     protected List<ContactInfo> contactInfos;
@@ -29,9 +29,10 @@ public class User {
 
     public User() {}
 
-    public User(String nom, String pseudo, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos,String token) {
+    public User(String nom, String pseudo, String mdp, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos,String token) {
         this.nom = nom;
         this.pseudo = pseudo;
+        this.mdp = mdp;
         this.photoUrl = photoUrl;
         this.socialNetworks = socialNetworks;
         this.contactInfos = contactInfos;
@@ -73,6 +74,14 @@ public class User {
 
     public void setContactInfos(List<ContactInfo> contactInfos) {
         this.contactInfos = contactInfos;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getToken() {
