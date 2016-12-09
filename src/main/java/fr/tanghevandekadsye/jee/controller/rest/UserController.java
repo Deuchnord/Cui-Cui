@@ -1,5 +1,6 @@
 package fr.tanghevandekadsye.jee.controller.rest;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 
 import fr.tanghevandekadsye.jee.entity.User;
@@ -20,6 +21,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @JsonIgnore
+    public static String TOKEN_ACCEPTED_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     /**
      * Permet à l'utilisateur d'obtenir un token pour l'api
      * @param username
@@ -28,8 +32,9 @@ public class UserController {
     @RequestMapping(value = "/obtainToken/{username}/{password}",method = RequestMethod.POST)
     public void obtainToken(@PathVariable(value = "username") String username, @PathVariable(value = "password") String password)
     {
+        String token = generateToken();
         User user = userRepository.findByPseudoAndPassword(username,password);
-        //user.setToken(token);
+        user.setToken(token);
         userRepository.save(user);
     }
 
@@ -39,6 +44,33 @@ public class UserController {
         User user = userRepository.findByPseudoAndPasswordAndToken(username,password,token);
         user.setToken(null);
         userRepository.save(user);
+    }
+
+    /**
+     * Génère une chaîne de 30 caractères à utiliser comme token.
+     * @return le token généré
+     */
+    public static String generateToken() {
+        return generateToken(30);
+    }
+
+    public static String generateToken(int nbChar) {
+        return generateToken(nbChar, TOKEN_ACCEPTED_CHARACTERS);
+    }
+
+    /**
+     * Génère une chaîne contenant <code>nbChar</code> caractères à utiliser comme token.
+     * @param nbChar la taille de la chaîne
+     * @param acceptedCharacters une chaîne contenant les caractères susceptibles de se trouver dans le token
+     * @return le token généré
+     */
+    public static String generateToken(int nbChar, String acceptedCharacters) {
+        String token = "";
+
+        for(int i = 0; i < nbChar; i++)
+            token += acceptedCharacters.charAt((int) (Math.random() * acceptedCharacters.length()));
+
+        return token;
     }
 
     @RequestMapping("/{username}")
