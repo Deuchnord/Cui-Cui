@@ -42,9 +42,9 @@ public class MessageController {
     }
 
     @RequestMapping("/hashtag/{name}")
-    public Iterable<Message> getByHashtags(@PathVariable(value = "name") String hashtag)
+    public Iterable<Message> getByHashtags(@PathVariable(value = "name") String hashtags)
     {
-        return repository.findByHashtag(hashtag);
+        return repository.findByHashtags(hashtags);
     }
 
     @RequestMapping("/search/{text}")

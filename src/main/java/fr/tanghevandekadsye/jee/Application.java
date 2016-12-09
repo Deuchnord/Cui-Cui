@@ -1,17 +1,32 @@
 package fr.tanghevandekadsye.jee;
 
+import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
+import fr.tanghevandekadsye.jee.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import java.util.ArrayList;
 
 @SpringBootApplication
-@ComponentScan({"fr.tanghevandekadsye.jee.Interfaces.Repository","fr.tanghevandekadsye.jee.controller.html"})
-public class Application {
+@ComponentScan({"fr.tanghevandekadsye.jee.Interfaces.Repository","fr.tanghevandekadsye.jee.controller.html","fr.tanghevandekadsye.jee.controller.rest"})
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    private UserRepository userRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+
+
     }
 
+    @Override
+    public void run(String... strings) throws Exception {
+        User user = new User("Quentin vandekadsye", "qvandekadsye", "victor", "", new ArrayList<>(), new ArrayList<>(), null);
+
+        userRepository.save(user);
+    }
 }

@@ -73,7 +73,7 @@ public class UserController {
         return token;
     }
 
-    @RequestMapping("/{username}")
+    @RequestMapping("/get/{username}")
     public Iterable<User> getByPseudo(@PathVariable(value = "username") String pseudo)
     {
         return userRepository.findByPseudo(pseudo);
@@ -88,7 +88,7 @@ public class UserController {
     }
 
     @RequestMapping("/{id}")
-    public User findById(@PathVariable(value = "id") long id)
+    public User findById(@PathVariable(value = "id") String id)
     {
         return userRepository.findOne(id);
     }

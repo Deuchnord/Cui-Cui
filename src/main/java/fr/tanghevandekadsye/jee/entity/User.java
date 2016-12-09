@@ -19,9 +19,9 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    protected Long id;
-    protected String nom, pseudo, photoUrl, password;
+    protected String id;
+    protected String nom, photoUrl, password;
+    protected String pseudo;
     protected List<User> followedUsers;
     protected List<SocialNetwork> socialNetworks;
     protected List<ContactInfo> contactInfos;
@@ -30,6 +30,7 @@ public class User {
     public User() {}
 
     public User(String nom, String pseudo, String mdp, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos,String token) {
+        this.id = null;
         this.nom = nom;
         this.pseudo = pseudo;
         this.password = mdp;
@@ -40,7 +41,7 @@ public class User {
         this.token = token;
     }
 
-    public Long getId() { return id; }
+    public String getId() { return id; }
     public String getNom() { return nom; }
     public String getPseudo() { return pseudo; }
     public String getPhotoUrl() { return photoUrl; }
@@ -48,7 +49,7 @@ public class User {
     public List<SocialNetwork> getSocialNetworks() { return socialNetworks; }
     public List<ContactInfo> getContactInfos() { return contactInfos; }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
