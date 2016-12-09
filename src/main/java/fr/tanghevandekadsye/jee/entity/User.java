@@ -32,7 +32,7 @@ public class User {
     public User(String nom, String pseudo, String mdp, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos,String token) {
         this.nom = nom;
         this.pseudo = pseudo;
-        this.mdp = mdp;
+        this.password = mdp;
         this.photoUrl = photoUrl;
         this.socialNetworks = socialNetworks;
         this.contactInfos = contactInfos;
