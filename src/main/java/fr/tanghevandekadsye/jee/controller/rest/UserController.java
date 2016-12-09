@@ -93,5 +93,11 @@ public class UserController {
         return userRepository.findOne(id);
     }
 
+    @RequestMapping("/")
+    public Iterable<User> findAll()
+    {
+        return userRepository.findAll();
+    }
+
 
 }
