@@ -13,7 +13,7 @@
                 <a href="login">Se connecter</a>
             </li>
             <li>
-                <a href="inscription">S'inscrire</a>
+                <a href="subscribe">S'inscrire</a>
             </li>
 
         </ul>
@@ -24,7 +24,10 @@
             <p>Entrez vos informations pour vous connecter</p>
         </section>
         <section>
-            <form id="inscriptionform" name="inscription" method="post" action="/connection">
+            {{#error-credentials}}
+            <p class="message-handler error">Les identifiants que vous avez entrés sont incorrects !</p>
+            {{/error-credentials}}
+            <form id="inscriptionform" name="inscription" method="post" action="/login">
                 <label for="ipt_pseudo">Pseudo</label>
                 <input type="text" id="ipt_pseudo" name="pseudo" required/>
                 <label for="ipt_password">Mot de passe</label>

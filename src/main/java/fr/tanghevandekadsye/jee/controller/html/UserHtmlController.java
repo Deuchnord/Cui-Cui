@@ -1,8 +1,6 @@
 package fr.tanghevandekadsye.jee.controller.html;
 
-import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
-import fr.tanghevandekadsye.jee.SocialNetwork;
 import fr.tanghevandekadsye.jee.entity.TwitterSocialNetwork;
 import fr.tanghevandekadsye.jee.entity.User;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -18,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jerome on 10/12/16.
- */
-
 @Controller
 public class UserHtmlController {
 
@@ -34,8 +28,7 @@ public class UserHtmlController {
     }
 
     @RequestMapping(value = "/subscribe", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute User usr)
-    {
+    public String createUser(@ModelAttribute User usr) {
         userRepository.save(usr);
 
         return "subscribe_success";
@@ -51,14 +44,14 @@ public class UserHtmlController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, ModelMap model, @RequestParam String pseudo, @RequestParam String password) {
         User user = userRepository.findByPseudoAndPassword(pseudo, password);
-        if(user != null) {
-            request.getSession().setAttribute("user", user);
-            model.addAttribute("error-credentials", true);
 
+        if (user == null) {
+            model.addAttribute("error-credentials", true);
             return "login-form";
         }
 
-        return "redirect:/";
+        request.getSession().setAttribute("user", user);
+        return "redirect:/timeline";
     }
 
     @RequestMapping(value = "/edit-profile")
@@ -75,7 +68,7 @@ public class UserHtmlController {
 
     @RequestMapping(value = "/add-twitter", method = RequestMethod.POST)
     public String addTwitterSocialNetwork(HttpServletRequest request, @ModelAttribute TwitterSocialNetwork twitterSocialNetwork) {
-        User user = (User) request.getSession().getAttribute("user"); // TODO récupérer l'utilisateur courant
+        User user = (User) request.getSession().getAttribute("user");
 
         user.addSocialNetwork(twitterSocialNetwork);
         userRepository.save(user);
@@ -95,4 +88,5 @@ public class UserHtmlController {
 
         return "search_users";
     }
+
 }
