@@ -7,6 +7,7 @@ import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,9 +31,9 @@ public class UserHtmlController {
     }
 
     @RequestMapping(value = "/subscribe", method = RequestMethod.POST)
-    public String createUser(String nom, String pseudo, String mdp, String photoUrl, List<SocialNetwork> socialNetworks, List<ContactInfo> contactInfos) {
-        User newUser = new User(nom, pseudo, mdp, photoUrl, socialNetworks, contactInfos, null);
-        userRepository.save(newUser);
+    public String createUser(@ModelAttribute User usr)
+    {
+        userRepository.save(usr);
 
         return "subscribe_success";
     }
