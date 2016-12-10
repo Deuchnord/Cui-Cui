@@ -1,5 +1,20 @@
-nav
+nav, header
 {
     background-color: #005EFF;
     color: #eeeeee;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+nav ul li a
+{
+    text-decoration: none;
+    color:#eeeeee;
+}
+nav ul li a:hover
+{
+    text-decoration: underline;
 }
