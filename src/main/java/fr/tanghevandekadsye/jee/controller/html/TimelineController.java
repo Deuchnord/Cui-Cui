@@ -35,7 +35,7 @@ public class TimelineController {
     @RequestMapping(value = "/send-message", method = RequestMethod.POST)
     public String sendMessage(HttpServletRequest request, @RequestBody String content) {
         User user = (User) request.getSession().getAttribute("user");
-        Message message = new Message(user, content);
+        Message message = new Message(user, request.getParameter("message"));
         messageRepository.save(message);
 
         return "redirect:/timeline";
