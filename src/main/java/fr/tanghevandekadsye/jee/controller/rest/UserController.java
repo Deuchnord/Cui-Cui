@@ -29,7 +29,7 @@ public class UserController {
      * @param username
      * @param password
      */
-    @RequestMapping(value = "/obtainToken/{username}/{password}",method = RequestMethod.POST)
+    @RequestMapping(value = "/obtainToken/{username}/{password}",method = RequestMethod.PUT)
     public void obtainToken(@PathVariable(value = "username") String username, @PathVariable(value = "password") String password)
     {
         String token = generateToken();

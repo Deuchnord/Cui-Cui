@@ -1,5 +1,6 @@
 package fr.tanghevandekadsye.jee;
 
+import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        User user = new User("Quentin vandekadsye", "qvandekadsye", "victor", "", new ArrayList<>(), new ArrayList<>(), null);
+        userRepository.deleteAll();
+        userRepository.save(new User("Quentin","qvandekadsye","victor",null,new ArrayList<SocialNetwork>(),new ArrayList<ContactInfo>(),null));
 
-        userRepository.save(user);
     }
 }

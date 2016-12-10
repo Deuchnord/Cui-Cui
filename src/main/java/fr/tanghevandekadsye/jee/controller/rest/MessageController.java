@@ -30,7 +30,7 @@ public class MessageController {
      * @return Le message
      */
     @RequestMapping("/{id}")
-    public Message getMessage(@PathVariable(value = "id") long id)
+    public Message getMessage(@PathVariable(value = "id") String id)
     {
         return repository.findOne(id);
     }
@@ -65,7 +65,7 @@ public class MessageController {
 
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteMessage(@PathVariable(value = "id") long id)
+    public void deleteMessage(@PathVariable(value = "id") String id)
     {
         repository.delete(id);
 }
