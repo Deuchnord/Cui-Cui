@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <li>
-                    Bienvenue, {{username}}!
+                    Bienvenue, {{user.pseudo}}!
                 </li>
                 <li>
                     <form method="get" action="/search">
@@ -31,6 +31,21 @@
                 <button type="submit">Cuiter</button>
             </form>
         </div>
+        {{#messages}}
+        <div class="cweet">
+            <div class="cweet-image-handler">
+                {{#author.photoUrl}}
+                <img src="{{author.photoUrl}}" alt="cweet-avatar">
+                {{/author.photoUrl}}
+            </div>
+            <div class="cweet-info">
+
+                <span class="cweet-name">{{author.nom}}</span> <span class="cweet-pseudo">{{author.pseudo}}</span>
+                <span class="cweet-text">{{text}}</span>
+
+            </div>
+        </div>
+        {{/messages}}
     </div>
 
 </body>

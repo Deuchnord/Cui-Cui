@@ -26,8 +26,9 @@ public class TimelineController {
     @RequestMapping("/timeline")
     public String displayTimeline(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("user");
-
-        model.addAttribute("username", user.getNom());
+        //messageRepository.findAll();
+        model.addAttribute("user", user);
+        model.addAttribute("messages",messageRepository.findAll());
         return "timeline_main";
     }
 

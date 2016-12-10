@@ -1,6 +1,7 @@
 package fr.tanghevandekadsye.jee;
 
 import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
+import fr.tanghevandekadsye.jee.Interfaces.Repository.MessageRepository;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private MessageRepository messageRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
 
@@ -27,7 +31,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         userRepository.deleteAll();
-        userRepository.save(new User("Quentin","qvandekadsye","victor",null,new ArrayList<SocialNetwork>(),new ArrayList<ContactInfo>(),null));
+        messageRepository.deleteAll();
 
     }
 }
