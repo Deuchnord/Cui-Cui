@@ -5,6 +5,7 @@ import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.SocialNetwork;
 import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +17,14 @@ import java.util.List;
 /**
  * Created by jerome on 10/12/16.
  */
-public class UserController {
+
+@Controller
+public class UserHtmlController {
+
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/subscribe")
+    @RequestMapping("/subscribe")
     public String createUser() {
         return "subscribe";
     }
