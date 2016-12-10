@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cui-Cui - Inscription</title>
+    <link rel="stylesheet" href="/design.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">Cui-Cui</div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="login">Se connecter</a>
+                </li>
+                <li>
+                    <a href="inscription">S'inscrire</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="presentation">
+            <p>Alors comme ça on veut s'inscrire sur Cui-Cui ? Super, c'est cool ! Mais pour ça, il va falloir remplir un petit formulaire ;)</p>
+        </section>
+        <section>
+            <form id="inscriptionform" name="inscription" method="post" action="/subscribe">
+                <label for="ipt_name">Nom d'utilisateur</label>
+                <input type="text" id="ipt_name" required/>
+                <label for="ipt_pseudo">Pseudo (Commencera par @votrepseudo</label>
+                <input type="text" id="ipt_pseudo" required/>
+                <label for="ipt_password">Mot de passe</label>
+                <input type="password" id="ipt_password" required/>
+                <label for="ipt_profile">Photo de profil</label>
+                <input type="file" id="ipt_profile">
+                <label for="ipt_mail">Email</label>
+                <input type="email" id="ipt_mail">
+                <input type="submit" value="S'inscrire"/>
+            </form>
+        </section>
+
+    </main>
+</body>
+</html>

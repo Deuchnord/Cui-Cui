@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class TimelineController {
-    @RequestMapping("/")
+    @RequestMapping("/timeline")
     public String displayTimeline(Model model) {
         model.addAttribute("username", "Jean-Pierre");
         return "timeline_main";
