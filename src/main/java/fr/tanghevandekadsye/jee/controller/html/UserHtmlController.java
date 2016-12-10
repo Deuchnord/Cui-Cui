@@ -3,6 +3,7 @@ package fr.tanghevandekadsye.jee.controller.html;
 import fr.tanghevandekadsye.jee.Interfaces.ContactInfo;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.SocialNetwork;
+import fr.tanghevandekadsye.jee.entity.TwitterSocialNetwork;
 import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class UserHtmlController {
         return "subscribe_success";
     }
 
-    @RequestMapping(value = "/edit_profile")
+    @RequestMapping(value = "/edit-profile")
     public String editUser() {
         return "edit_profile";
     }
@@ -46,6 +47,15 @@ public class UserHtmlController {
     @RequestMapping(value = "/edit-profile", method = RequestMethod.POST)
     public String editUser(User user) {
         userRepository.save(user);
+
+        return "edit_profile_success";
+    }
+
+    @RequestMapping(value = "/add-twitter", method = RequestMethod.POST)
+    public String addTwitterSocialNetwork(@ModelAttribute TwitterSocialNetwork twitterSocialNetwork) {
+        User user; // TODO récupérer l'utilisateur courant
+
+        user.addSocialNetwork(twitterSocialNetwork);
 
         return "edit_profile_success";
     }
