@@ -73,8 +73,32 @@ public class User {
         this.socialNetworks = socialNetworks;
     }
 
+    public void addSocialNetwork(SocialNetwork socialNetwork) {
+        this.socialNetworks.add(socialNetwork);
+    }
+
+    public void removeSocialNetwork(SocialNetwork socialNetwork) {
+        this.socialNetworks.remove(socialNetwork);
+    }
+
+    public void removeSocialNetwork(int id) {
+        this.socialNetworks.remove(id);
+    }
+
     public void setContactInfos(List<ContactInfo> contactInfos) {
         this.contactInfos = contactInfos;
+    }
+
+    public void addContactInfo(ContactInfo contactInfo) {
+        this.contactInfos.add(contactInfo);
+    }
+
+    public void removeContactInfo(ContactInfo contactInfo) {
+        this.contactInfos.remove(contactInfo);
+    }
+
+    public void removeContactInfo(int id) {
+        this.contactInfos.remove(id);
     }
 
     public String getPassword() {

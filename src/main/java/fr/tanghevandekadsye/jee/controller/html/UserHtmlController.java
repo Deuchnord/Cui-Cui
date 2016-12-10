@@ -56,6 +56,7 @@ public class UserHtmlController {
         User user; // TODO récupérer l'utilisateur courant
 
         user.addSocialNetwork(twitterSocialNetwork);
+        userRepository.save(user);
 
         return "edit_profile_success";
     }
