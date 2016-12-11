@@ -47,7 +47,17 @@ public class SearchHtmlController {
         return users;
     }
 
-    public List<Message> searchMessages(String q) {
+    public List<Message> searchMessages(String q)
+    {
         return messageRepository.findByText(q);
     }
+
+    @RequestMapping("/hashtag/{word}")
+    public String searchHashtag(@RequestParam(value = "word") String q, ModelMap modelMap)
+    {
+        modelMap.addAttribute("messages",this.messageRepository.findByHashtags(q));
+        modelMap.addAttribute("query",q);
+        return "search-hashtag";
+    }
 }
+
