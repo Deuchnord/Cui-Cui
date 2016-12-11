@@ -46,14 +46,14 @@ public class Message {
         hashtags = parseHashtags(text);
     }
 
-    protected List<String> parseHashtags(String text) {
+    public static List<String> parseHashtags(String text) {
         List<String> hashtags = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("(\\#[a-zA-Z0-1_]+)");
+        Pattern pattern = Pattern.compile("(#[a-zA-Z0-1_]+)");
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
-            System.out.println(matcher);
+            hashtags.add(matcher.group());
         }
 
         return hashtags;
