@@ -7,6 +7,8 @@ import fr.tanghevandekadsye.jee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -53,11 +55,16 @@ public class SearchHtmlController {
     }
 
     @RequestMapping("/hashtag/{word}")
-    public String searchHashtag(@RequestParam(value = "word") String q, ModelMap modelMap)
+    public String searchHashtag(ModelMap modelMap, @PathVariable String word)
     {
-        modelMap.addAttribute("messages",this.messageRepository.findByHashtags(q));
-        modelMap.addAttribute("query",q);
+        modelMap.addAttribute("messages", this.messageRepository.findByHashtags(word));
+        modelMap.addAttribute("query", word);
         return "search-hashtag";
+    }
+
+    @RequestMapping("/hashtag")
+    public String searchHashtagWithParam(ModelMap modelMap, @RequestParam String q) {
+        return searchHashtag(modelMap, q);
     }
 }
 
