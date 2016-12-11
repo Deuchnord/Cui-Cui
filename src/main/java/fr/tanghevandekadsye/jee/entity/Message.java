@@ -53,7 +53,7 @@ public class Message {
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
-            hashtags.add(matcher.group());
+            hashtags.add(matcher.group().replace("#", ""));
         }
 
         return hashtags;
