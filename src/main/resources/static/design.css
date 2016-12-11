@@ -87,3 +87,7 @@ nav ul li a:hover
     margin-left: 2px;
     font-weight: lighter;
 }
+
+button img {
+    height: 16px;
+}
