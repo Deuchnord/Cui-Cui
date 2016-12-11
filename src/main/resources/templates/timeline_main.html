@@ -27,8 +27,8 @@
     <div class="timeline">
         <div class="message">
             <form method="post" action="/send-message">
-                <textarea name="message" placeholder="Tapez ici votre message"></textarea>
-                <button type="submit">Cuiter</button>
+                <textarea id="textTweet" name="message" placeholder="Tapez ici votre message"></textarea>
+                <button id="btn_subtweet" type="submit">Cweeter</button>
             </form>
         </div>
         {{#messages}}
@@ -45,10 +45,10 @@
                 </div>
                 <span class="cweet-text">{{text}}</span>
                 <div class="hashtagList">
-                    <ul>
+                    <ul id="hashList">
                         {{#hashtags}}
                         <li>
-                            <a href="/hashtag/{{.}}">{{.}}</a>
+                            <a class="linkhashtag" href="/hashtag/{{.}}">{{.}}</a>
                         </li>
                         {{/hashtags}}
                     </ul>

@@ -54,6 +54,7 @@ nav ul li a:hover
     display: flex;
     flex-direction: row;
     margin-left: 5px;
+    margin-top: 10px;
 
 }
 
@@ -90,4 +91,52 @@ nav ul li a:hover
 
 button img {
     height: 16px;
+}
+
+.hashtagList
+{
+    margin-top: 10px;
+}
+
+#hashList
+{
+    list-style: none;
+    display: inline;
+    padding: 0;
+
+}
+
+#hashList li
+{
+    display: inline;
+}
+
+.linkhashtag
+{
+    text-decoration: none;
+    color: #eeeeee;
+    background-color: #005EFF;
+    padding: 7px;
+    border-radius: 15px;
+}
+
+.linkhashtag:hover
+{
+    background-color: blue;
+    cursor: pointer;
+}
+
+#textTweet
+{
+    width: 100%;
+    height: 70px;
+}
+
+#btn_subtweet
+{
+    background-color: #005EFF;
+    color: #eeeeee;
+    border: 1px solid transparent;
+    padding: 9px 16px 8px 17px;
+    border-radius: 4px;
 }
