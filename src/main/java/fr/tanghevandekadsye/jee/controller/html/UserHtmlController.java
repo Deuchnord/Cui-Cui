@@ -34,7 +34,10 @@ public class UserHtmlController {
     }
 
     @RequestMapping("/login")
-    public String login(ModelMap model) {
+    public String login(HttpServletRequest request, ModelMap model) {
+        if(request.getSession().getAttribute("user") != null)
+            return "redirect:/timeline";
+
         model.addAttribute("error-credentials", false);
 
         return "login-form";
@@ -42,6 +45,9 @@ public class UserHtmlController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, ModelMap model, @RequestParam String pseudo, @RequestParam String password) {
+        if(request.getSession().getAttribute("user") != null)
+            return "redirect:/timeline";
+
         User user = userRepository.findByPseudoAndPassword(pseudo, password);
 
         if (user == null) {
@@ -90,6 +96,8 @@ public class UserHtmlController {
     @RequestMapping(value = "/add-twitter", method = RequestMethod.POST)
     public String addTwitterSocialNetwork(HttpServletRequest request, @ModelAttribute TwitterSocialNetwork twitterSocialNetwork) {
         User user = (User) request.getSession().getAttribute("user");
+        if(user == null)
+            return "redirect:/login";
 
         user.addSocialNetwork(twitterSocialNetwork);
         userRepository.save(user);
