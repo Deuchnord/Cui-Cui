@@ -6,7 +6,6 @@ import fr.tanghevandekadsye.jee.entity.User;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,8 +75,7 @@ public class UserHtmlController {
         return "edit_profile_success";
     }
 
-    @RequestMapping("/search/users")
-    public String searchUsers(Model model, @RequestParam String keywords) {
+    public List<User> searchUsers(String keywords) {
         List<User> foundUsers = new ArrayList<>();
 
         List<User> usersFoundByPseudo = userRepository.findByPseudo(keywords);
@@ -86,7 +84,7 @@ public class UserHtmlController {
         foundUsers.addAll(usersFoundByPseudo);
         foundUsers.addAll(usersFoundByName);
 
-        return "search_users";
+        return foundUsers;
     }
 
 }

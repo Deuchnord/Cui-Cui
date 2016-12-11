@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cui-Cui</title>
+    <link rel="stylesheet" href="/design.css" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">Cui-Cui</div>
+        <nav>
+            <ul>
+                <li>
+                    Recherche de {{query}}
+                </li>
+                <li>
+                    <form method="get" action="/search">
+                        <input type="text" name="q" placeholder="Rechercher…" value="{{query}}" />
+                        <button type="submit">🔍</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="users">
+        {{#users}}
+        <div class="user">
+            {{nom}}
+            <div class="user-image-handler">
+                {{#photoUrl}}
+                <img class="user-avatar" src="{{photoUrl}}" alt="cweet-avatar">
+                {{/photoUrl}}
+            </div>
+        </div>
+        {{/users}}
+    </div>
+
+    <div class="timeline">
+        {{#messages}}
+        <div class="cweet">
+            <div class="cweet-image-handler">
+                {{#author.photoUrl}}
+                <img class="cweet-avatar" src="{{author.photoUrl}}" alt="cweet-avatar">
+                {{/author.photoUrl}}
+            </div>
+            <div class="cweet-info">
+
+                <div class="cweet-namesHandler">
+                    <span class="cweet-name">{{author.nom}}</span> <span class="cweet-pseudo">@{{author.pseudo}}</span>
+                </div>
+                <span class="cweet-text">{{text}}</span>
+
+            </div>
+        </div>
+        {{/messages}}
+    </div>
+
+</body>
+</html>

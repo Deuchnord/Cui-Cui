@@ -19,7 +19,7 @@ import java.util.List;
  * Created by tanghe on 05/12/16.
  */
 @Controller
-public class TimelineController {
+public class TimelineHtmlController {
     @Autowired
     MessageRepository messageRepository;
 
@@ -41,10 +41,7 @@ public class TimelineController {
         return "redirect:/timeline";
     }
 
-    @RequestMapping("/search-message")
-    public String searchMessage(@RequestParam String search) {
-        List<Message> messages = messageRepository.findByText(search);
-
-        return "search_messages";
+    public List<Message> searchMessage(String search) {
+        return messageRepository.findByText(search);
     }
 }
