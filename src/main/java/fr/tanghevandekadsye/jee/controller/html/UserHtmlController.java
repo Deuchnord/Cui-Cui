@@ -54,7 +54,7 @@ public class UserHtmlController {
     }
 
     @RequestMapping(value = "/edit-profile")
-    public String editUser(Model model,HttpServletRequest request)
+    public String editUser(ModelMap model, HttpServletRequest request)
     {
         User user = (User) request.getSession().getAttribute("user");
         if(user == null)
