@@ -57,6 +57,8 @@ public class SearchHtmlController {
     @RequestMapping("/hashtag/{word}")
     public String searchHashtag(ModelMap modelMap, @PathVariable String word)
     {
+        if(!word.startsWith("#"))
+            word = "#" + word;
         modelMap.addAttribute("messages", this.messageRepository.findByHashtags(word));
         modelMap.addAttribute("query", word);
         return "search-hashtag";
