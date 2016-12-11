@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 
 import fr.tanghevandekadsye.jee.entity.User;
+import fr.tanghevandekadsye.jee.exceptions.InvalidTokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +40,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/deleteToken/{username}/{password}/{token}",method = RequestMethod.DELETE)
-    public void deleteToken(@PathVariable(value = "username")String username,@PathVariable(value = "password")String password,@PathVariable(value = "token")String token)
-    {
+    public void deleteToken(@PathVariable(value = "username")String username,@PathVariable(value = "password")String password,@PathVariable(value = "token")String token) throws InvalidTokenException {
         User user = userRepository.findByPseudoAndPasswordAndToken(username,password,token);
+
+        if(user == null)
+            throw new InvalidTokenException();
+
         user.setToken(null);
         userRepository.save(user);
     }
@@ -54,6 +58,11 @@ public class UserController {
         return generateToken(30);
     }
 
+    /**
+     * Génère une chaîne contenant <code>nbChar</code> caractères à utiliser comme token.
+     * @param nbChar la taille de la chaîne
+     * @return le token généré
+     */
     public static String generateToken(int nbChar) {
         return generateToken(nbChar, TOKEN_ACCEPTED_CHARACTERS);
     }
@@ -80,9 +89,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{username}/{newUsername}/{token}",method = RequestMethod.PUT)
-    public void setPseudo(@PathVariable(value = "username") String pseudo,@PathVariable(value = "newUsername")String nouveauPseudo,@PathVariable(value = "token") String token)
-    {
+    public void setPseudo(@PathVariable(value = "username") String pseudo,@PathVariable(value = "newUsername")String nouveauPseudo,@PathVariable(value = "token") String token) throws InvalidTokenException {
         User user =userRepository.findByPseudoAndToken(pseudo,token);
+
+        if(user == null)
+            throw new InvalidTokenException();
+
         user.setPseudo(nouveauPseudo);
         userRepository.save(user);
     }

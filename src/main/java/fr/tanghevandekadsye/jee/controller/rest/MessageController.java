@@ -4,6 +4,7 @@ import fr.tanghevandekadsye.jee.Interfaces.Repository.MessageRepository;
 import fr.tanghevandekadsye.jee.Interfaces.Repository.UserRepository;
 import fr.tanghevandekadsye.jee.entity.Message;
 import fr.tanghevandekadsye.jee.entity.User;
+import fr.tanghevandekadsye.jee.exceptions.InvalidTokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,19 +58,20 @@ public class MessageController {
      */
 
     @RequestMapping(value = "/{token}/{message}",method = RequestMethod.POST)
-    public void addMessage(@PathVariable(value = "token") String token, @PathVariable(value = "message") String message)
-    {
+    public void addMessage(@PathVariable(value = "token") String token, @PathVariable(value = "message") String message) throws InvalidTokenException {
         User author = userRepo.findByToken(token);
+
+        if(author == null)
+            throw new InvalidTokenException();
+
         Message msg = new Message(author, message);
         repository.save(msg);
 
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteMessage(@PathVariable(value = "id") String id)
     {
         repository.delete(id);
 }
-
-
-
 }
