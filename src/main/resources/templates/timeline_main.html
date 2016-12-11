@@ -44,6 +44,15 @@
                     <span class="cweet-name">{{author.nom}}</span> <span class="cweet-pseudo">@{{author.pseudo}}</span>
                 </div>
                 <span class="cweet-text">{{text}}</span>
+                <div class="hashtagList">
+                    <ul>
+                        {{#hashtags}}
+                        <li>
+                            <a href="/hashtag/{{.}}">{{.}}</a>
+                        </li>
+                        {{/hashtags}}
+                    </ul>
+                </div>
 
             </div>
         </div>
