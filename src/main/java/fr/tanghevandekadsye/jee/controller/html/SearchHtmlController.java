@@ -40,7 +40,7 @@ public class SearchHtmlController {
         List<User> users = new ArrayList<>();
 
         List<User> usersFoundByPseudo = userRepository.findByPseudo(q);
-        List<User> usersFoundByName = userRepository.findByPseudo(q);
+        List<User> usersFoundByName = userRepository.findByNom(q);
 
         users.addAll(usersFoundByPseudo);
         users.addAll(usersFoundByName);

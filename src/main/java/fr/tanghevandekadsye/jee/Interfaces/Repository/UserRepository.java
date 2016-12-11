@@ -15,5 +15,6 @@ public interface UserRepository  extends MongoRepository<User,String> {
     User findByPseudoAndPassword(String pseudo, String password);
     User findByPseudoAndPasswordAndToken(String pseudo, String password,String token);
     List<User> findByPseudo(String pseudo);
+    List<User> findByNom(String nom);
     User findByPseudoAndToken(String pseudo, String token);
 }
