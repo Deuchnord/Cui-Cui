@@ -35,12 +35,14 @@
         <div class="cweet">
             <div class="cweet-image-handler">
                 {{#author.photoUrl}}
-                <img src="{{author.photoUrl}}" alt="cweet-avatar">
+                <img class="cweet-avatar" src="{{author.photoUrl}}" alt="cweet-avatar">
                 {{/author.photoUrl}}
             </div>
             <div class="cweet-info">
 
-                <span class="cweet-name">{{author.nom}}</span> <span class="cweet-pseudo">{{author.pseudo}}</span>
+                <div class="cweet-namesHandler">
+                    <span class="cweet-name">{{author.nom}}</span> <span class="cweet-pseudo">@{{author.pseudo}}</span>
+                </div>
                 <span class="cweet-text">{{text}}</span>
 
             </div>
