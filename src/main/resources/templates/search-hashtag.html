@@ -12,30 +12,23 @@
         <nav>
             <ul>
                 <li>
-                    Recherche de {{query}}
+                    Les Cweets utilisant le hashtag {{query}}
                 </li>
                 <li>
                     <form method="get" action="/search">
-                        <input type="text" name="q" placeholder="Rechercher…" value="{{query}}" />
+                        <input type="text" name="q" placeholder="Rechercher…" />
                         <button type="submit">🔍</button>
+                    </form>
+                </li>
+                <li>
+                    <form method="get" action="/hashtag">
+                        <input type="text" name="q" placeholder="#Hashtag" />
+                        <button type="submit"><img src="/search-icon.png" /></button>
                     </form>
                 </li>
             </ul>
         </nav>
     </header>
-
-    <div class="users">
-        {{#users}}
-        <div class="user">
-            {{nom}}
-            <div class="user-image-handler">
-                {{#photoUrl}}
-                <img class="user-avatar" src="{{photoUrl}}" alt="cweet-avatar">
-                {{/photoUrl}}
-            </div>
-        </div>
-        {{/users}}
-    </div>
 
     <div class="timeline">
         {{#messages}}
