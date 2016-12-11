@@ -117,4 +117,15 @@ public class UserHtmlController {
         return foundUsers;
     }
 
+    @RequestMapping(value = "/disconnect")
+    public String disconnect(HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        if(user != null)
+        {
+            request.getSession().removeAttribute("user");
+        }
+        return "redirect:/";
+    }
+
 }
