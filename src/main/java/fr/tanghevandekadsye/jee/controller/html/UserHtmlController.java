@@ -55,15 +55,37 @@ public class UserHtmlController {
     }
 
     @RequestMapping(value = "/edit-profile")
-    public String editUser() {
+    public String editUser(Model model,HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        if(user == null)
+        {
+            return "redirect:/";
+        }
+        else
+        {
+            model.addAttribute("user",user);
+        }
         return "edit_profile";
     }
 
     @RequestMapping(value = "/edit-profile", method = RequestMethod.POST)
-    public String editUser(User user) {
-        userRepository.save(user);
+    public String editUser(@ModelAttribute User user,HttpServletRequest request) {
 
-        return "edit_profile_success";
+        User userSession = (User) request.getSession().getAttribute("user");
+        if(user == null)
+        {
+            return "redirect:/";
+        }
+        else
+        {
+            user.setId(userSession.getId());
+            user.setPassword(userSession.getPassword());
+            userRepository.delete(userSession);
+            userRepository.save(user);
+            request.getSession().setAttribute("user",user);
+        }
+        return "redirect:/timeline";
     }
 
     @RequestMapping(value = "/add-twitter", method = RequestMethod.POST)
