@@ -1,11 +1,12 @@
 body
 {
     margin: 0;
+    font-family: Calibri, sans-serif;
 }
 
 nav, header
 {
-    background-color: #005EFF;
+    background-color: #0055aa;
     color: #eeeeee;
 }
 
@@ -13,6 +14,13 @@ nav ul
 {
     list-style: none;
     display:inline;
+}
+
+nav ul li
+{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li a
@@ -139,4 +147,16 @@ button img {
     border: 1px solid transparent;
     padding: 9px 16px 8px 17px;
     border-radius: 4px;
+}
+
+footer {
+    background: #0055aa;
+    color: white;
+    font-family: sans-serif;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
