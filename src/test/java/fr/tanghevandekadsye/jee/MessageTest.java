@@ -13,8 +13,8 @@ public class MessageTest {
         List<String> hashtags = Message.parseHashtags("Hello World! #PremierGazouillis #TestUnitaire");
 
         assertEquals(2, hashtags.size());
-        assertEquals("#PremierGazouillis", hashtags.get(0));
-        assertEquals("#TestUnitaire", hashtags.get(1));
+        assertEquals("PremierGazouillis", hashtags.get(0));
+        assertEquals("TestUnitaire", hashtags.get(1));
     }
 
 }
