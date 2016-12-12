@@ -26,7 +26,7 @@ mvn package
 Une fois que la compilation est terminée, il suffit alors de compiler le fichier JAR généré :
 
 ```bash
-java -jar target/[nom du fichier ici].jar
+java -jar target/gs-serving-web-content-0.1.0.jar
 ```
 
 Le serveur va alors être lancé et les pages Web seront accessibles sur [localhost:8080](http://localhost:8080).
