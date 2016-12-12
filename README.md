@@ -3,6 +3,16 @@ Un projet Spring de microbloging par VAN DE KADSYE Quentin et TANGHE Jérôme
 
 ## Mise en place
 
+### Prérequis
+
+Pour fonctionner, MongoDB doit être installé et configuré, et le service doit être lancé.
+
+**Attention :** sur certains systèmes, il faudra également créer manuellement le répertoire `/data/dbd` :
+
+```bash
+sudo mkdir -p /data/dbd
+```
+
 ### Compiler Cui-Cui
 
 Pour compiler Cui-Cui, taper simplement la commande suivante dans le terminal :
