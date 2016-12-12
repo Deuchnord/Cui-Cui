@@ -7,10 +7,10 @@ Un projet Spring de microbloging par VAN DE KADSYE Quentin et TANGHE Jérôme
 
 Pour fonctionner, MongoDB doit être installé et configuré, et le service doit être lancé.
 
-**Attention :** sur certains systèmes, il faudra également créer manuellement le répertoire `/data/dbd` :
+**Attention :** sur certains systèmes, il faudra également créer manuellement le répertoire `/data/db` :
 
 ```bash
-sudo mkdir -p /data/dbd
+sudo mkdir -p /data/db
 ```
 
 ### Compiler Cui-Cui
